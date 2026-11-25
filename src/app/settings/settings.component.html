@@ -1,0 +1,13 @@
+<ActionBar title="Ajustes" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Menú" ios.position="left" android.position="actionBar" (tap)="openDrawer()"></ActionItem>
+</ActionBar>
+
+<ScrollView class="catalog-page">
+  <StackLayout class="catalog-header">
+    <Label text="Perfil" class="catalog-title"></Label>
+    <Label text="Nombre de usuario" class="catalog-hint" marginTop="14"></Label>
+    <Label [text]="(profile.name$ | async) || 'Sin configurar'" class="catalog-description" textWrap="true"></Label>
+    <Button text="Editar nombre" (tap)="editName()" class="catalog-primary" marginTop="16"></Button>
+  </StackLayout>
+</ScrollView>

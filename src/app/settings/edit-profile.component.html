@@ -1,0 +1,14 @@
+<ActionBar title="Editar perfil" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Cancelar" ios.position="left" android.position="actionBar" (tap)="cancel()"></ActionItem>
+</ActionBar>
+
+<ScrollView class="catalog-page">
+  <StackLayout class="catalog-header">
+    <Label text="Nombre de usuario" class="catalog-title" textWrap="true"></Label>
+    <TextField [(ngModel)]="name" hint="Escribe tu nombre" accessibilityLabel="Nombre de usuario"
+      maxLength="40" marginTop="14" class="catalog-input" (returnPress)="save()"></TextField>
+    <Label *ngIf="error" [text]="error" class="catalog-error" textWrap="true"></Label>
+    <Button text="Guardar" (tap)="save()" class="catalog-primary" marginTop="16"></Button>
+  </StackLayout>
+</ScrollView>

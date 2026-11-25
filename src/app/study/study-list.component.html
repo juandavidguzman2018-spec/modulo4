@@ -1,0 +1,22 @@
+<ActionBar title="Plan de estudio" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Menú" ios.position="left" android.position="actionBar" (tap)="openDrawer()"></ActionItem>
+</ActionBar>
+
+<ScrollView class="study-page">
+  <StackLayout class="study-content" *ngIf="progress.completed$ | async as completed">
+    <GridLayout rows="auto, auto" columns="*, auto" class="study-hero">
+      <Label row="0" col="0" text="Tu ruta de estudio" class="study-title" textWrap="true"></Label>
+      <Label row="1" col="0" [text]="completed.size + ' de ' + progress.activities.length + ' completadas'" class="study-summary"></Label>
+      <Image rowSpan="2" col="1" src="res://study_badge" width="58" height="58" marginLeft="12"></Image>
+    </GridLayout>
+
+    <Label *ngIf="platformMessage" [text]="platformMessage" class="study-platform" textWrap="true"></Label>
+
+    <StackLayout *ngFor="let activity of progress.activities" class="study-card">
+      <Label [text]="activity.title" class="study-card-title" textWrap="true"></Label>
+      <Label [text]="activity.minutes + ' min · ' + (completed.has(activity.id) ? 'Terminada' : 'Pendiente')" class="study-meta"></Label>
+      <Button [text]="'Abrir ' + activity.title" class="study-button" (tap)="openActivity(activity)"></Button>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>

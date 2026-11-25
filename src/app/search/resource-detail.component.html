@@ -1,0 +1,18 @@
+<ActionBar title="Detalle del recurso" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Volver" ios.position="left" android.position="actionBar" (tap)="goBack()"></ActionItem>
+</ActionBar>
+
+<ScrollView class="catalog-page">
+  <StackLayout class="catalog-header">
+    <Image src="res://study_badge" width="72" height="72" horizontalAlignment="left" marginBottom="12"></Image>
+    <StackLayout *ngIf="resource$ | async as resource; else missing">
+      <Label [text]="resource.title" class="catalog-title" textWrap="true"></Label>
+      <Label [text]="resource.category" class="catalog-hint" marginTop="8"></Label>
+      <Label [text]="resource.description" class="catalog-description" textWrap="true"></Label>
+    </StackLayout>
+    <ng-template #missing>
+      <Label text="No se encontró ese recurso." class="catalog-description" textWrap="true"></Label>
+    </ng-template>
+  </StackLayout>
+</ScrollView>

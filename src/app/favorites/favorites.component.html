@@ -1,0 +1,19 @@
+<ActionBar title="Favoritos" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Menú" ios.position="left" android.position="actionBar" (tap)="openDrawer()"></ActionItem>
+</ActionBar>
+
+<ScrollView class="catalog-page">
+  <StackLayout *ngIf="favorites.items$ | async as favoritesList" class="catalog-header">
+    <Label text="Recursos guardados" class="catalog-title" textWrap="true"></Label>
+    <Label *ngIf="lastQueued" [text]="lastQueued" class="catalog-hint" marginTop="12" textWrap="true"></Label>
+    <Label *ngIf="!favoritesList.length" text="Toca la estrella de un resultado de búsqueda para guardarlo."
+      class="catalog-description" textWrap="true"></Label>
+    <StackLayout *ngFor="let resource of favoritesList" class="catalog-row" marginTop="12">
+      <Label [text]="resource.title" class="catalog-row-title" textWrap="true"></Label>
+      <Label [text]="resource.category" class="catalog-hint"></Label>
+      <Button text="Leer ahora" (tap)="queue(resource)" class="catalog-primary"></Button>
+      <Button text="Quitar favorito" (tap)="favorites.toggle(resource)" class="catalog-secondary"></Button>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>

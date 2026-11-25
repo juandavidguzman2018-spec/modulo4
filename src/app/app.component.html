@@ -1,0 +1,86 @@
+<RadSideDrawer [drawerTransition]="sideDrawerTransition">
+  <GridLayout tkDrawerContent rows="auto, *" class="nt-drawer__content">
+    <StackLayout row="0" class="nt-drawer__header">
+      <Image class="nt-drawer__header-image fas t-36" src="res://study_badge"></Image>
+      <Label class="nt-drawer__header-brand" text="Ruta de estudio"></Label>
+      <Label class="nt-drawer__header-footnote" text="Plan y progreso"></Label>
+    </StackLayout>
+
+    <ScrollView row="1" class="nt-drawer__body">
+      <StackLayout>
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/home')"
+          (tap)="onNavItemTap('/home')"
+        >
+          <Label col="0" text="&#xf015;" class="nt-icon fas"></Label>
+          <Label col="1" text="Inicio" class="p-r-10"></Label>
+        </GridLayout>
+
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/browse')"
+          (tap)="onNavItemTap('/browse')"
+        >
+          <Label col="0" text="&#xf1ea;" class="nt-icon far"></Label>
+          <Label col="1" text="Explorar" class="p-r-10"></Label>
+        </GridLayout>
+
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/search')"
+          (tap)="onNavItemTap('/search')"
+        >
+          <Label col="0" text="&#xf002;" class="nt-icon fas"></Label>
+          <Label col="1" text="Buscar" class="p-r-10"></Label>
+        </GridLayout>
+
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/favorites')"
+          (tap)="onNavItemTap('/favorites')"
+        >
+          <Label col="0" text="&#xf005;" class="nt-icon fas"></Label>
+          <Label col="1" text="Favoritos" class="p-r-10"></Label>
+        </GridLayout>
+
+
+        <GridLayout columns="auto, *" class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/study')" (tap)="onNavItemTap('/study')">
+          <Label col="0" text="&#xf02d;" class="nt-icon fas"></Label>
+          <Label col="1" text="Plan de estudio" class="p-r-10"></Label>
+        </GridLayout>
+
+        <GridLayout columns="auto, *" class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/native-tools')" (tap)="onNavItemTap('/native-tools')">
+          <Label col="0" text="&#xf030;" class="nt-icon fas"></Label>
+          <Label col="1" text="Funciones nativas" class="p-r-10"></Label>
+        </GridLayout>
+
+        <StackLayout class="hr"></StackLayout>
+
+        <GridLayout
+          columns="auto, *"
+          class="nt-drawer__list-item"
+          [class.-selected]="isComponentSelected('/settings')"
+          (tap)="onNavItemTap('/settings')"
+        >
+          <Label col="0" text="&#xf013;" class="nt-icon fas"></Label>
+          <Label col="1" text="Ajustes" class="p-r-10"></Label>
+        </GridLayout>
+      </StackLayout>
+    </ScrollView>
+  </GridLayout>
+
+  <GridLayout tkMainContent>
+    <page-router-outlet></page-router-outlet>
+    <Label *ngIf="push.toast$ | async as message" [text]="message" textWrap="true"
+      verticalAlignment="bottom" horizontalAlignment="center" margin="16"
+      padding="12 18" borderRadius="14" color="#ffffff" backgroundColor="#183c35"
+      [isUserInteractionEnabled]="false"></Label>
+  </GridLayout>
+</RadSideDrawer>

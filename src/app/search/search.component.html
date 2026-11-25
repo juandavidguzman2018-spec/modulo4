@@ -1,0 +1,50 @@
+<ActionBar title="Buscar recursos" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Menú" ios.position="left" android.position="actionBar" (tap)="openDrawer()"></ActionItem>
+</ActionBar>
+
+<GridLayout rows="auto, *" class="catalog-page">
+  <StackLayout row="0" class="catalog-header">
+    <Label text="Biblioteca de estudio" class="catalog-title" textWrap="true"></Label>
+    <GridLayout columns="*, auto" class="catalog-form">
+      <TextField col="0" [(ngModel)]="query" #queryModel="ngModel" catalogQuery
+        hint="Título o categoría" accessibilityLabel="Buscar por título o categoría"
+        maxLength="100" returnKeyType="search" (returnPress)="queryModel.valid && applySearch()" class="catalog-input"></TextField>
+      <Button col="1" text="Buscar" [isEnabled]="queryModel.valid" (tap)="applySearch()" class="catalog-primary"></Button>
+    </GridLayout>
+    <Label *ngIf="queryModel.invalid" text="Escribe al menos dos caracteres o deja el campo vacío."
+      class="catalog-error" textWrap="true"></Label>
+    <GridLayout columns="*, auto">
+      <Label col="0" [text]="loading ? 'Consultando catálogo…' : results.length + ' resultados'"
+        class="catalog-hint" textWrap="true" verticalAlignment="center"></Label>
+      <GridLayout col="1" columns="auto, auto" (longPress)="refreshResults()" class="catalog-refresh">
+        <Label col="0" #refreshIcon text="↻" class="catalog-refresh-icon"></Label>
+        <Button col="1" text="Actualizar" [isEnabled]="!refreshing" (tap)="refreshResults()" class="catalog-secondary"></Button>
+      </GridLayout>
+    </GridLayout>
+    <Label *ngIf="error" [text]="error" class="catalog-error" textWrap="true"></Label>
+  </StackLayout>
+
+  <PullToRefresh row="1" (refresh)="onPull($any($event))">
+    <ListView [items]="results" separatorColor="#d7e2df">
+      <ng-template let-item="item">
+        <FlexboxLayout class="catalog-row" alignItems="center">
+          <StackLayout flexGrow="1" flexShrink="1" class="catalog-row-content" (tap)="openResource(item)">
+            <Label [text]="item.title" class="catalog-row-title" textWrap="true"></Label>
+            <Label [text]="item.category" class="catalog-hint"></Label>
+          </StackLayout>
+          <Button flexShrink="0" [text]="favorites.has(item.id) ? '★' : '☆'"
+            [accessibilityLabel]="(favorites.has(item.id) ? 'Quitar favorito: ' : 'Guardar favorito: ') + item.title"
+            (tap)="favorites.toggle(item)" class="catalog-secondary" fontSize="22"></Button>
+          <Button flexShrink="0" text="Categoría" [accessibilityLabel]="'Cambiar categoría de ' + item.title"
+            (tap)="chooseCategory(item)" class="catalog-secondary"></Button>
+        </FlexboxLayout>
+      </ng-template>
+    </ListView>
+  </PullToRefresh>
+
+  <Label row="1" *ngIf="!loading && !error && !results.length" text="No hay coincidencias." verticalAlignment="top"
+    horizontalAlignment="center" class="catalog-empty" [isUserInteractionEnabled]="false"></Label>
+  <Label row="1" *ngIf="toastMessage" [text]="toastMessage" textWrap="true" verticalAlignment="bottom"
+    horizontalAlignment="center" class="catalog-toast" [isUserInteractionEnabled]="false"></Label>
+</GridLayout>

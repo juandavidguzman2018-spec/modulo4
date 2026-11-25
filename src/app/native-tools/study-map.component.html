@@ -1,0 +1,15 @@
+<ActionBar title="Mapa de estudio" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Volver" ios.position="left" android.position="actionBar" (tap)="goBack()"></ActionItem>
+</ActionBar>
+
+<GridLayout rows="auto, *" class="catalog-page">
+  <StackLayout row="0" class="catalog-header">
+    <Label text="Biblioteca Virgilio Barco" class="catalog-title" textWrap="true"></Label>
+    <Label text="Bogotá, Colombia" class="catalog-hint" marginTop="8"></Label>
+    <Label *ngIf="!configured" text="El mapa de esta entrega requiere Android y la configuración ROUTE_MAPS_API_KEY."
+      class="catalog-description" textWrap="true"></Label>
+  </StackLayout>
+  <MapView *ngIf="configured" row="1" [lat]="place.lat" [lng]="place.lng" [zoom]="15"
+    (ready)="onReady($any($event))"></MapView>
+</GridLayout>

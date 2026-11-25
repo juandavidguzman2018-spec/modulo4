@@ -1,0 +1,6 @@
+<resources>
+    <style name="LaunchScreenTheme" parent="LaunchScreenThemeBase">
+        <item name="android:windowSplashScreenBackground">@color/study_launch_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/study_launch_mark</item>
+    </style>
+</resources>

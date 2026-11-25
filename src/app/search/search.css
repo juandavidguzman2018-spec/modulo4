@@ -1,0 +1,16 @@
+.catalog-page { background-color: #eef4f2; }
+.catalog-header { padding: 20; }
+.catalog-title { color: #123930; font-size: 27; font-weight: bold; }
+.catalog-form { margin-top: 12; }
+.catalog-input { min-height: 48; padding: 8 12; background-color: #ffffff; color: #123930; border-radius: 8; }
+.catalog-primary { min-height: 48; margin-left: 8; background-color: #145349; color: #ffffff; border-radius: 8; }
+.catalog-secondary { min-height: 44; color: #145349; font-size: 14; text-transform: none; margin: 0; }
+.catalog-error { color: #9a2428; font-size: 14; margin-top: 6; }
+.catalog-hint { color: #45645d; font-size: 14; }
+.catalog-refresh-icon { color: #145349; font-size: 24; vertical-align: center; }
+.catalog-row { background-color: #ffffff; padding: 8 16; }
+.catalog-row-content { padding: 10 6 10 0; }
+.catalog-row-title { color: #123930; font-size: 17; font-weight: bold; }
+.catalog-empty { margin-top: 18; color: #45645d; }
+.catalog-description { margin-top: 16; color: #243e3a; font-size: 18; }
+.catalog-toast { margin: 14 20; padding: 10 16; border-radius: 14; color: #ffffff; background-color: #183c35; }

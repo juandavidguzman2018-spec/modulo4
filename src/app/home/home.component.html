@@ -1,0 +1,26 @@
+<ActionBar title="Inicio" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Menú" ios.position="left" android.position="actionBar" (tap)="onDrawerButtonTap()"></ActionItem>
+</ActionBar>
+
+<ScrollView backgroundColor="#eef4f2">
+  <StackLayout padding="28">
+    <Image src="res://study_badge" width="112" height="112" horizontalAlignment="left" marginTop="24"></Image>
+    <Label text="Ruta de estudio" fontSize="32" fontWeight="bold" color="#123930" marginTop="22" textWrap="true"></Label>
+    <Label text="Explora los recursos del módulo, busca por tema y clasifica lo que quieras repasar."
+      fontSize="18" color="#45645d" marginTop="12" textWrap="true"></Label>
+    <Button text="Buscar recursos" (tap)="openCatalog()" backgroundColor="#145349" color="#ffffff"
+      minHeight="48" borderRadius="10" marginTop="23" horizontalAlignment="left"></Button>
+
+    <Label text="Cola de lectura" fontSize="23" fontWeight="bold" color="#123930" marginTop="30"></Label>
+    <StackLayout *ngIf="readingQueue$ | async as queue">
+      <Label *ngIf="!queue.length" text="Usa Leer ahora desde Favoritos para añadir un recurso."
+        color="#45645d" marginTop="8" textWrap="true"></Label>
+      <StackLayout *ngFor="let resource of queue" backgroundColor="#ffffff" padding="14" marginTop="12">
+        <Label [text]="resource.title" fontSize="18" fontWeight="bold" color="#123930" textWrap="true"></Label>
+        <Label [text]="resource.description" color="#45645d" marginTop="8" textWrap="true"></Label>
+        <Button text="Quitar de la cola" (tap)="remove(resource.id)" horizontalAlignment="left"></Button>
+      </StackLayout>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>

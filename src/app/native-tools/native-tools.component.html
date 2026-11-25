@@ -1,0 +1,24 @@
+<ActionBar title="Funciones nativas" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Menú" ios.position="left" android.position="actionBar" (tap)="openDrawer()"></ActionItem>
+</ActionBar>
+
+<ScrollView class="catalog-page">
+  <StackLayout class="catalog-header">
+    <Label text="Cámara y compartir" class="catalog-title" textWrap="true"></Label>
+    <Button text="Compartir texto" (tap)="shareStudyText()" class="catalog-primary" marginTop="12"></Button>
+    <Button text="Tomar foto" [isEnabled]="!capturing" (tap)="capture()" class="catalog-secondary"></Button>
+    <Label *ngIf="cameraError" [text]="cameraError" class="catalog-error" textWrap="true"></Label>
+    <StackLayout *ngIf="photo">
+      <Image [src]="photo" height="216" stretch="aspectFit" accessibilityLabel="Foto capturada"></Image>
+      <Button text="Compartir foto" (tap)="sharePhoto()" class="catalog-primary"></Button>
+    </StackLayout>
+    <Button text="Ver mapa" (tap)="openMap()" class="catalog-secondary" marginTop="12"></Button>
+
+    <Label text="Notificaciones Firebase" class="catalog-title" textWrap="true" marginTop="24"></Label>
+    <Button text="Obtener token FCM" [isEnabled]="!connecting" (tap)="enablePush()" class="catalog-primary" marginTop="12"></Button>
+    <Label *ngIf="pushError" [text]="pushError" class="catalog-error" textWrap="true"></Label>
+    <TextView *ngIf="push.token$ | async as token" [text]="token" [editable]="false"
+      accessibilityLabel="Token FCM del dispositivo" class="catalog-input" marginTop="10"></TextView>
+  </StackLayout>
+</ScrollView>

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "rutas",
+    "title": "Navegación modular",
+    "category": "Lectura",
+    "description": "Localiza el módulo de búsqueda y sigue sus rutas hasta el listado y el detalle."
+  },
+  {
+    "id": "formularios",
+    "title": "Formularios interactivos",
+    "category": "Práctica",
+    "description": "Escribe un carácter para comprobar el error del validador. Usa dos o más para filtrar."
+  },
+  {
+    "id": "gestos",
+    "title": "Gestos táctiles",
+    "category": "Práctica",
+    "description": "Mantén pulsado el ícono de actualización para añadir un recurso al catálogo."
+  },
+  {
+    "id": "animaciones",
+    "title": "Animaciones de interfaz",
+    "category": "Práctica",
+    "description": "Observa el giro del ícono al refrescar. La animación indica que se está actualizando el catálogo."
+  },
+  {
+    "id": "imagenes",
+    "title": "Imágenes nativas",
+    "category": "Lectura",
+    "description": "Busca la imagen de libro en App_Resources y verifica cómo la referencia res:// funciona en Android e iOS."
+  },
+  {
+    "id": "dialogos",
+    "title": "Diálogos de acción",
+    "category": "Repaso",
+    "description": "Abre el selector de categoría de un resultado y vuelve a abrirlo para comprobar la selección."
+  },
+  {
+    "id": "estilos",
+    "title": "Estilos por plataforma",
+    "category": "Lectura",
+    "description": "Compara los estilos de las tarjetas de Plan de estudio en Android y en iOS."
+  },
+  {
+    "id": "persistencia",
+    "title": "Persistencia local",
+    "category": "Repaso",
+    "description": "Cambia la categoría de un recurso y reinicia la app para comprobar que el cambio se conservó."
+  },
+  {
+    "id": "splash",
+    "title": "Pantalla de arranque",
+    "category": "Lectura",
+    "description": "Compara el drawable de arranque y el tema para Android 12 y versiones posteriores."
+  }
+]

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<testsuite name="Chrome Headless 158.0.0.0 (Windows 10)" package="" timestamp="2026-11-25T05:26:59" id="0" tests="4" errors="0" failures="0" time="0.005">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/158.0.0.0 Safari/537.36"/>
+  </properties>
+  <testcase name="Reducer de la cola de lectura agrega el recurso al principio sin modificar el estado anterior" time="0.003" classname="Reducer de la cola de lectura"/>
+  <testcase name="Reducer de la cola de lectura quita únicamente el recurso seleccionado" time="0.001" classname="Reducer de la cola de lectura"/>
+  <testcase name="Reducer de la cola de lectura empieza con una cola vacía y conserva las acciones desconocidas" time="0.001" classname="Reducer de la cola de lectura"/>
+  <testcase name="Reducer de la cola de lectura vuelve a poner al principio un recurso existente sin duplicarlo" time="0" classname="Reducer de la cola de lectura"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

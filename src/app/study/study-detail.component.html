@@ -1,0 +1,26 @@
+<ActionBar title="Actividad" class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <ActionItem text="Volver" ios.position="left" android.position="actionBar" (tap)="returnToList()"></ActionItem>
+</ActionBar>
+
+<ScrollView class="study-page">
+  <StackLayout class="study-content">
+    <StackLayout *ngIf="activity$ | async as activity; else missingActivity">
+      <StackLayout class="study-hero">
+        <Label [text]="activity.title" class="study-title" textWrap="true"></Label>
+        <Label [text]="activity.minutes + ' minutos'" class="study-summary"></Label>
+      </StackLayout>
+      <StackLayout class="study-card" *ngIf="progress.completed$ | async as completed">
+        <Label text="Objetivo" class="study-card-title"></Label>
+        <Label [text]="activity.goal" class="study-goal" textWrap="true"></Label>
+        <Label [text]="completed.has(activity.id) ? 'Terminada' : 'Pendiente'" class="study-meta"></Label>
+        <Button [text]="completed.has(activity.id) ? 'Marcar como pendiente' : 'Marcar como terminada'"
+          class="study-button" (tap)="toggle(activity)"></Button>
+      </StackLayout>
+    </StackLayout>
+    <ng-template #missingActivity>
+      <Label text="No se encontró la actividad." class="study-card" textWrap="true"></Label>
+      <Button text="Volver al plan" class="study-button" (tap)="returnToList()"></Button>
+    </ng-template>
+  </StackLayout>
+</ScrollView>
